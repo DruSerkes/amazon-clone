@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .link {
+    @apply cursor-pointer hover:underline;
+  }
+
+  .Header-text {
+    @apply font-bold md:text-sm;
+  }
+
+  .badge {
+    @apply absolute top-[-3px] right-[-3px] pb-2 rounded-full w-4 h-4 text-center text-xs bg-white text-black;
+  }
+}
