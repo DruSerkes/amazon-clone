@@ -3,7 +3,6 @@ import Image from "next/image";
 import Currency from "react-currency-formatter";
 
 export const Product = ({
-  id,
   title,
   category,
   description,
