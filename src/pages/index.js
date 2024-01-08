@@ -8,14 +8,13 @@ export default function Home({ products }) {
   return (
     <div className="min-h-screen bg-gray-100">
       <Head>
-        <title key="title">Amazon 2.0</title>
+        <title key="title">Amazon Clone</title>
       </Head>
 
       <Header />
 
       <main className="h-full grid max-w-screen-xl mx-auto">
         <Banner />
-
         <ProductFeed products={products} />
       </main>
     </div>

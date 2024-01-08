@@ -14,11 +14,11 @@ export const Product = ({
   const isEligibleForPrime = Math.random() < 0.5;
 
   return (
-    <div className="relative flex flex-col m-5 mt-0 p-6 bg-white text-sm">
+    <div className="relative flex flex-col m-5 p-6 bg-white text-sm">
       <p className="absolute top-2 right-2 text-xs italic text-gray-500 mb-6">
         {category}
       </p>
-      <div>
+      <div className="m-auto">
         <Image
           loading="lazy"
           src={image}
@@ -32,7 +32,7 @@ export const Product = ({
       <p className="flex">
         {stars.map((_, i) => (
           <StarIcon
-            key={`${title}-${i}`}
+            key={`${title}-star-${i}`}
             className="w-5 h-5"
             fill="gold"
             color="gold"
@@ -50,6 +50,7 @@ export const Product = ({
             width={40}
             height={25}
             className="opacity-90"
+            alt="prime logo"
           />
           <p className="text-gray text-xs">FREE 2-Day Delivery</p>
         </div>
