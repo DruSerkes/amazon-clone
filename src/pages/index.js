@@ -2,7 +2,7 @@ import Head from "next/head";
 import { Header } from "../components";
 import { Banner } from "../components/Banner/Banner";
 import { ProductFeed } from "../components/ProductFeed/ProductFeed";
-import { FAKE_STORE_API_URL } from "./constants";
+import { FAKE_STORE_API_URL } from "../app/constants";
 
 export default function Home({ products }) {
   return (
