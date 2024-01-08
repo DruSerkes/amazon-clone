@@ -14,9 +14,8 @@ export const Product = ({
   const stars = new Array(Math.floor(rating.rate)).fill();
   const isEligibleForPrime = Math.random() < 0.5;
 
-  // TODO: Finish styling this component ~1:30:00
   return (
-    <div className="relative flex flex-col w-64 h-96 m-5 p-6 bg-white text-sm">
+    <div className="relative flex flex-col m-5 mt-0 p-6 bg-white text-sm">
       <p className="absolute top-2 right-2 text-xs italic text-gray-500 mb-6">
         {category}
       </p>
@@ -30,7 +29,7 @@ export const Product = ({
           objectFit="contain"
         />
       </div>
-      <p>{title}</p>
+      <p className="my-3 font-bold">{title}</p>
       <p className="flex">
         {stars.map((_, i) => (
           <StarIcon
@@ -41,21 +40,22 @@ export const Product = ({
           />
         ))}
       </p>
-      <div>
+      <div className="my-3 text-xs line-clamp-2">{description}</div>
+      <div className="mb-3">
         <Currency quantity={price} />
       </div>
       {isEligibleForPrime && (
-        <div>
+        <div className="flex items-center space-x-2 mb-3">
           <Image
             src="https://upload.wikimedia.org/wikipedia/commons/b/bb/Prime_logo.png"
-            width={70}
-            height={35}
+            width={40}
+            height={25}
             className="opacity-90"
           />
-          <p>FREE 2-Day Delivery</p>
+          <p className="text-gray text-xs">FREE 2-Day Delivery</p>
         </div>
       )}
-      {/* <p className="">{description}</p> */}
+      <button className="mt-auto product-button">Add to Cart</button>
     </div>
   );
 };
