@@ -1,13 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { useSelector } from "react-redux";
+
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
+
 import { Search } from "./Search";
 import { Bottom } from "./Bottom";
+import { selectItems } from "../../slices/cartSlice";
 
 export function Header() {
   const { data: session } = useSession();
+  const items = useSelector(selectItems);
   const greeting = session?.user?.name ? `Hi ${session.user.name}` : "Sign In";
+
   const homeLink = "/";
   const checkoutLink = "/checkout";
   const handleClickGreeting = session ? signOut : signIn;
@@ -47,7 +53,9 @@ export function Header() {
             <div className="flex items-center link">
               <div className="relative">
                 <ShoppingCartIcon className="w-8 h-8" />
-                <span className="badge bg-yellow-200">0</span>
+                <span className="badge bg-yellow-200">
+                  {items?.length ?? ""}
+                </span>
               </div>
               <p className="Header-text hidden md:inline">Cart</p>
             </div>

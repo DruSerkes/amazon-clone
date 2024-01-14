@@ -24,4 +24,8 @@
     focus:outline-none focus:ring-1 focus:ring-yellow-500
     active:from-yellow-500 active:text-white;
   }
+
+  .button-disabled {
+    @apply from-gray-300 to-gray-500 border-gray-200 text-gray-300 cursor-not-allowed;
+  }
 }
