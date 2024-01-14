@@ -41,7 +41,7 @@ export function Header() {
         <div className="flex flex-grow justify-between p-1 items-center text-white text-xs pr-2">
           <div className="link" onClick={handleClickGreeting}>
             <p>{greeting}</p>
-            {!!session && <p className="Header-text">Account</p>}
+            {!!session && <p className="text-gray-300">Sign Out</p>}
           </div>
 
           <div className="link">

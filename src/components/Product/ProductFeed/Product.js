@@ -31,7 +31,6 @@ export const Product = ({
     };
 
     dispatch(addToCart(productForCart));
-    alert(`${title} added to cart!`);
   };
 
   return (

@@ -4,14 +4,21 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 import { selectItems } from "../slices/cartSlice";
 import CheckoutProduct from "../components/Product/CheckoutProduct/CheckoutProduct";
+import { useSession } from "next-auth/react";
 
 export default function Checkout() {
+  const { data: session } = useSession();
   const items = useSelector(selectItems);
   const isEmpty = items.length === 0;
-  const buttonClasses = `product-button mt-2 ${isEmpty && "button-disabled"}`;
+  const canCheckout = isEmpty || !session;
+  const buttonClasses = `product-button mt-2 ${
+    canCheckout && "button-disabled"
+  }`;
   const subTotal = items.reduce((acc, item) => acc + item.price, 0);
+  const buttonText = !session ? "Sign In to Checkout" : "Proceed to Checkout";
+
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-100 min-h-screen">
       <Header />
 
       <main className="sm:flex max-w-screen-xl mx-auto">
@@ -46,8 +53,8 @@ export default function Checkout() {
             Subtotal ({items.length} items):{" "}
             <span className="font-bold">${subTotal}</span>
           </h2>
-          <button disabled={isEmpty} className={buttonClasses}>
-            Proceed to Checkout
+          <button disabled={canCheckout} className={buttonClasses}>
+            {buttonText}
           </button>
         </div>
       </main>
