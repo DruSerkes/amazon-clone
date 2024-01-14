@@ -1,5 +1,9 @@
 import Image from "next/image";
-import { addToCart, selectItems } from "../../../slices/cartSlice";
+import {
+  addToCart,
+  removeFromCart,
+  selectItems,
+} from "../../../slices/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import ProductDetails from "../ProductDetails";
 
@@ -16,9 +20,8 @@ export const Product = ({
   const dispatch = useDispatch();
   const items = useSelector(selectItems);
   const isInCart = items.some((item) => item.id === id);
-  const buttonClasses = `product-button ${isInCart && "button-disabled"}`;
 
-  const handleClickAddToCart = () => {
+  const handleAddToCart = () => {
     const productForCart = {
       id,
       title,
@@ -32,6 +35,12 @@ export const Product = ({
 
     dispatch(addToCart(productForCart));
   };
+
+  const handleRemoveFromCart = () => {
+    dispatch(removeFromCart({ id }));
+  };
+
+  const handleClick = isInCart ? handleRemoveFromCart : handleAddToCart;
 
   return (
     <div className="relative flex flex-col m-5 p-6 bg-white text-sm">
@@ -57,12 +66,8 @@ export const Product = ({
         isEligibleForPrime={isEligibleForPrime}
       />
 
-      <button
-        className={buttonClasses}
-        onClick={handleClickAddToCart}
-        disabled={isInCart}
-      >
-        {isInCart ? "In Cart" : "Add to Cart"}
+      <button className="product-button" onClick={handleClick}>
+        {isInCart ? "Remove" : "Add to Cart"}
       </button>
     </div>
   );
