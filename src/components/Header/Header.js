@@ -2,8 +2,13 @@ import Image from "next/image";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { Search } from "./Search";
 import { Bottom } from "./Bottom";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 export function Header() {
+  const { data: session } = useSession();
+  console.log({ session });
+  const greeting = session?.user?.name ? `Hi ${session.user.name}` : "Sign In";
+  const handleClickGreeting = session ? signOut : signIn;
   return (
     <header className="w-full sticky flex flex-col">
       <div className="w-full flex items-center justify-between px-1 py-2 bg-amazon_blue flex-grow space-x-3">
@@ -24,9 +29,9 @@ export function Header() {
 
         {/* Right Column */}
         <div className="flex flex-grow justify-between p-1 items-center text-white text-xs pr-2">
-          <div className="link">
-            <p>Hi Dru</p>
-            <p className="Header-text">Account & Lists</p>
+          <div className="link" onClick={handleClickGreeting}>
+            <p>{greeting}</p>
+            {!!session && <p className="Header-text">Account</p>}
           </div>
 
           <div className="link">
