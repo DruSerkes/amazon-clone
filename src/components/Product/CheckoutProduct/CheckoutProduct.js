@@ -18,8 +18,8 @@ function CheckoutProduct({
     dispatch(removeFromCart({ id }));
   };
   return (
-    <div className="flex p-4 border-b">
-      <div className="w-[20%]">
+    <div className="grid grid-cols-5 p-4 border-b">
+      <div className="col-span-1">
         <Image
           loading="lazy"
           src={image}
@@ -30,7 +30,7 @@ function CheckoutProduct({
         />
       </div>
 
-      <div className="w-[60%]">
+      <div className="col-span-3 mx-5">
         <ProductDetails
           title={title}
           description={description}
@@ -40,7 +40,7 @@ function CheckoutProduct({
         />
       </div>
 
-      <div className="w-[20%]" onClick={handleClickRemove}>
+      <div className="col-span-1" onClick={handleClickRemove}>
         <button className="product-button">Remove from Cart</button>
       </div>
     </div>
