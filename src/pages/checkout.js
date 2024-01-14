@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { selectItems } from "../slices/cartSlice";
 import CheckoutProduct from "../components/Product/CheckoutProduct/CheckoutProduct";
 import { useSession } from "next-auth/react";
+import Currency from "react-currency-formatter";
 
 export default function Checkout() {
   const { data: session } = useSession();
@@ -15,7 +16,7 @@ export default function Checkout() {
     canCheckout && "button-disabled"
   }`;
   const subTotal = items.reduce((acc, item) => acc + item.price, 0);
-  const buttonText = !session ? "Sign In to Checkout" : "Proceed to Checkout";
+  const buttonText = !session ? "Sign In to Checkout" : "Checkout";
 
   return (
     <div className="bg-gray-100 min-h-screen">
@@ -23,7 +24,7 @@ export default function Checkout() {
 
       <main className="sm:flex max-w-screen-xl mx-auto">
         {/* Main */}
-        <div className="w-[80%] shadow-sm">
+        <div className="w-full sm:w-[80%] text-center sm:text-left shadow-sm">
           <Image
             src="https://links.papareact.com/ikj"
             width={1020}
@@ -48,10 +49,12 @@ export default function Checkout() {
         </div>
 
         {/* SIDEBAR */}
-        <div className="w-[20%] bg-white py-5 px-3">
-          <h2 className="whitespace-nowrap">
-            Subtotal ({items.length} items):{" "}
-            <span className="font-bold">${subTotal}</span>
+        <div className="w-full sm:w-[20%] bg-white py-5 px-1 md:px-3 text-center">
+          <h2 className="">
+            <span>Subtotal ({items.length} items):&nbsp;</span>
+            <span className="font-bold">
+              <Currency quantity={subTotal} />
+            </span>
           </h2>
           <button disabled={canCheckout} className={buttonClasses}>
             {buttonText}
