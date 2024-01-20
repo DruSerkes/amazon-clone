@@ -9,12 +9,26 @@ export const Bottom = () => (
         <span>All</span>
       </p>
     </Link>
-    <p className="link">Prime Video</p>
-    <p className="link">Amazon Business</p>
-    <p className="link">Today's Deals</p>
-    <p className="link hidden lg:inline-flex">Electronics</p>
-    <p className="link hidden lg:inline-flex">Food & Grocery</p>
-    <p className="link hidden lg:inline-flex">Buy Again</p>
-    <p className="link hidden lg:inline-flex">Toolkit</p>
+    <Link href="/">
+      <p className="link">Prime Video</p>
+    </Link>
+    <Link href="/">
+      <p className="link">Amazon Business</p>
+    </Link>
+    <Link href="/">
+      <p className="link">Today's Deals</p>
+    </Link>
+    <Link href="/">
+      <p className="link hidden lg:inline-flex">Electronics</p>
+    </Link>
+    <Link href="/">
+      <p className="link hidden lg:inline-flex">Food & Grocery</p>
+    </Link>
+    <Link href="/">
+      <p className="link hidden lg:inline-flex">Buy Again</p>
+    </Link>
+    <Link href="/">
+      <p className="link hidden lg:inline-flex">Toolkit</p>
+    </Link>
   </div>
 );
