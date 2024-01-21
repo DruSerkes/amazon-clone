@@ -757,6 +757,11 @@
     redux-thunk "^2.3.0"
     reselect "^4.0.0"
 
+"@stripe/stripe-js@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@stripe/stripe-js/-/stripe-js-2.3.0.tgz#607f91b75990eb660b9a7a4a8a7c282f5babd3fc"
+  integrity sha512-iTwzjw1ORUR+1pH21+C/M05w+Jh5hAuE4QUei7Gnku65N7QpEaHtyVszYMYDBs6iNyLrD1tfQTSrjD6NkOA/ww==
+
 "@tailwindcss/line-clamp@^0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@tailwindcss/line-clamp/-/line-clamp-0.2.0.tgz#7f30f26ed3835d64d1eb5a9b0d60cf5291dd2a3b"
